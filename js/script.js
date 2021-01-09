@@ -21,8 +21,8 @@ for (;i < pokemonList.length; i++) {
     }else {
         typeMsg = ' has a type of ' + pokemonList[i].type+'.'; 
     }
-//    Here I store the result, of this ternary operator, in the variable bigPoke to be appended to the output message for the bigest pokemon.
-    let bigPoke =  pokemonList[i].height > 1.5 ? `- This is the tallest Pokeman`:``;
+//    Here I store the result, of this ternary operator, in the variable bigPoke to be appended to the output message for pokemon pokemons of 1.5 meters talls.
+    let bigPoke =  pokemonList[i].height > 1.5 ? `- Wow, this is a big pokemon!`:``;
 //    Here I form the output message using Template Literal form
     document.write(`${pokemonList[i].name} is ${pokemonList[i].height} meters tall and  ${typeMsg} ${bigPoke} <br>`);
 }

@@ -1,2 +1,23 @@
 /* CSS Document */
-
+body{
+    margin: 0; 
+    padding: 0;
+}
+.pokedex{
+    margin: 1rem;
+    border: 1px solid black;
+    width: 30vw;
+}
+.pokemon-list{
+    list-style: none;
+    padding: 0;
+}
+.pokemon-list li{
+    margin: .1rem;
+    width: 300px; 
+    padding: .5rem;
+    background-color: gray;
+}
+.button-new-style{
+    background-color: red;
+}

@@ -5,7 +5,7 @@ let pokemonRepository = (function() {
     let pokemonList = [
         {name:'Bulbasaur', type:['grass','poison'], height: 0.7}, 
         {name:'Charizard', type:['fire','flying'], height: 1.7}, 
-        {name:'Squirtle', type:['water'], height: 0.5}
+        {name:'Squirtle', type:['water'], height: 0.5},
     ];
     
     function add(pokemon){
@@ -22,13 +22,16 @@ let pokemonRepository = (function() {
     }
     function addListItem(pokemon){
             let pokeList = document.querySelector('.pokemon-list');
-        
             let listItem = document.createElement('li');
             let button = document.createElement('button');
             button.innerText = pokemon.name;
             button.classList.add('button-new-style');
             listItem.appendChild(button);
             pokeList.appendChild(listItem);
+            button.addEventListener('click', function(event){
+                let poke = event.target.innerText;
+                alert(`You have selected:  ${poke}`);
+            })
     }
    
     
@@ -44,7 +47,3 @@ let pokemonRepository = (function() {
 pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
 });
-
-pokemonRepository.getAll().forEach(addListItem(pokemon));
-
-

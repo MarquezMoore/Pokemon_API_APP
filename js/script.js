@@ -26,12 +26,15 @@ let pokemonRepository = (function() {
             let listItem = document.createElement('li');
             let button = document.createElement('button');
             button.innerText = pokemon.name;
-            // button.classList.add('button-new-style');
+            // button.classList.add('pokemon-button');
             listItem.appendChild(button);
             pokeList.appendChild(listItem);
-            button.addEventListener('click', function() {
-                showDetails(pokemon);
-            })
+            addClickEvent(button, pokemon);
+    }
+    function addClickEvent(button, pokemon){
+        button.addEventListener('click', function() {
+            showDetails(pokemon);
+        })
     }
     function showDetails(pokemon){
         let pokeName =  pokemon.name;
@@ -44,7 +47,7 @@ let pokemonRepository = (function() {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
-        showDetails: showDetails
+        showDetails: showDetails,
     }
 })(); 
 

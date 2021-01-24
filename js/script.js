@@ -1,12 +1,11 @@
 // JavaScript Document
 
-//this is my list of Pokemons
 let pokemonRepository = (function() {
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?limit=1118`;
     let pokemonList = [];
     // The function is to fetch to pokemon API and then add each item in the returned Promise to the pokemonList from above.
     function loadItems(){
-        console.log(`Loading`)//code to show loading image.
+        showLoadingMessage()//code to show loading image.
         return fetch(pokeAPI)
         .then(function(response){
             return response.json();
@@ -20,7 +19,7 @@ let pokemonRepository = (function() {
               };
               add(pokemon);
             })
-            console.log(`Done!`);//code to stop the loading image.
+            hideLoadingMessage();//code to stop the loading image.
         })
         .catch(function(error){
           console.log(`Fetch failed: ${error}`);
@@ -28,6 +27,7 @@ let pokemonRepository = (function() {
     }
     // This funciton is to load the details of the Pokemon via fetch. If successful, the pokemon's height, weight and image of the pokemon will be store in a pokeDetails object.
     function loadDetails(currentPokemon){
+        showLoadingMessage()//code to show loading image.
         let url = currentPokemon.detailsURL;
         return fetch(url)
         .then(function(response){
@@ -37,10 +37,17 @@ let pokemonRepository = (function() {
             currentPokemon.height = details.height,
             currentPokemon.image = details.sprites.back_default,
             currentPokemon.types = details.types
+            hideLoadingMessage();//code to stop the loading image.
         })
         .catch(function(error){
             console.log(`Fetch failed: ${error}`);
         })
+    }
+    function showLoadingMessage(){
+        console.log(`Loading...`)
+    }
+    function hideLoadingMessage(){
+        console.log(`Done!`)
     }
     // This is function is called through a loop from the loadItem function to add each item(pokemon) to the pokemonList from above. 
     function add(pokemon){

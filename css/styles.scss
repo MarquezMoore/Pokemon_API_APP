@@ -9,6 +9,8 @@ $gray8: #fafafaff;
 
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 body{
     height: 100vh;
@@ -21,9 +23,11 @@ body{
     border: 1px solid#ccc;
     padding: 1rem;
     width: 30%;
+    min-width: 200px;
     background-color: $gray8;
     max-height: 75%;
     overflow: scroll;
+    border-radius: 5px;
     h1{
         font-size: 2rem;
         color: $gray1;
@@ -39,12 +43,95 @@ body{
         font-size: 1.2rem;
         padding: 1rem;
         margin: .5rem 0;
-        text-align: left;
+        text-align: center;
         color: $gray2;
         transition: all 500ms;
+        border-radius: 5px;
         &:hover{
             transform: scale(1.05);
         }
+    }
+}
+.detail-modal-container{
+    position: fixed;
+    background: rgba(0,0,0,0.4);
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    // scroll if overflow
+    overflow: scroll;
+    // center modal with flex
+    display: none;
+    justify-content: center;
+    align-items: center;
+    &.visable{
+        display: flex;
+    }
+    .modal{
+        max-width: 50%;
+        max-height: 50%;
+        background: $gray8;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 5px;
+        .modal__header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 20px 0;
+            h1{
+                margin: 0 0 0 0;
+            }
+            .modal__close{
+                border: none;
+                border-radius: 5px;
+                padding: .2rem;
+                background: $gray6;
+                transition: all 500ms;
+                &:hover{
+                    transform: scale(1.05);
+                }
+            }
+        }
+        .modal__copy{
+            display: flex;
+            align-items: center;
+            padding: 0 0 20px 0;
+            img{
+                flex: 1;
+                margin: 0 15px 0 0;
+                width: 100px;
+                height: 100px;
+            }
+            p{
+                flex: 3;
+                margin: 0 0 0 15px;
+            }
+
+        }
+    }
+}
+
+@media all and (max-width: 500px) {
+    .pokedex{
+        width: 90%;
+    }
+}
+@media all and (min-width: 500px) and (max-width: 750px) {
+    .pokedex{
+        width: 75%;
+    }
+}
+@media all and (min-width: 750px) and (max-width: 960px) {
+    .pokedex{
+        width: 50%;
+    }
+}
+@media all and (min-width: 960px) {
+    .pokedex{
+        width: 50%;
     }
 }
 

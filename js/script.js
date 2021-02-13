@@ -4,7 +4,7 @@ let pokemonRepository = (function() {
     let searchInput = document.querySelector('.search')
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?limit=1000`;
     let pokemonList = [];
-    // The function is to fetch to pokemon API and then add each item in the returned Promise to the pokemonList from above.
+// The function is to fetch to pokemon API and then add each item in the returned Promise to the pokemonList from above.
     function loadItems(){
         showLoadingMessage()//code to show loading image.
         return fetch(pokeAPI)
@@ -26,7 +26,7 @@ let pokemonRepository = (function() {
           console.log(`Fetch failed: ${error}`);
         })
     }
-    // This funciton is to load the details of the Pokemon via fetch. If successful, the pokemon's height, weight and image of the pokemon will be store in a pokeDetails object.
+// This funciton is to load the details of the Pokemon via fetch. If successful, the pokemon's height, weight and image of the pokemon will be store in a pokeDetails object.
     function loadDetails(currentPokemon){
         showLoadingMessage()//code to show loading image.
         let url = currentPokemon.detailsURL;
@@ -50,36 +50,39 @@ let pokemonRepository = (function() {
     function hideLoadingMessage(){
         console.log(`Done!`)
     }
-    // This is function is called through a loop from the loadItem function to add each item(pokemon) to the pokemonList from above. 
+// This is function is called through a loop from the loadItem function to add each item(pokemon) to the pokemonList from above. 
     function add(pokemon){
           pokemonList.push(pokemon);
     }
-    //This function is to retrieve all available Pokemon fromt he pokemonList from above.
+//This function is to retrieve all available Pokemon fromt he pokemonList from above.
     function getAll(){
         return pokemonList;
     }
-    // This function is to add each Pokemon a an list to be display in the web applicaiton.
+// This function is to add each Pokemon a an list to be display in the web applicaiton.
     function addListItem(pokemon){
             let pokeList = document.querySelector('.pokemon-list');
             let listItem = document.createElement('li');
             listItem.classList.add('pokemon');
+            listItem.classList.add('col-12');
+            listItem.classList.add('col-md-4');
             let button = document.createElement('button');
             button.classList.add('btn');
             button.classList.add('btn-light');
             button.setAttribute('data-bs-toggle','modal');
             button.setAttribute('data-bs-target', '#pokemonModal');
             button.innerText = pokemon.name;
-            // button.classList.add('pokemon-button');
+            // append elements to 
             listItem.appendChild(button);
             pokeList.appendChild(listItem);
             addClickEvent(button, pokemon);
     }
-    //This function is used to add a event listener to each pokemon button created by the function above.
+//This function is used to add a event listener to each pokemon button created by the function above.
     function addClickEvent(button, pokemon){
         button.addEventListener('click', function() {
             showDetails(pokemon);
         })
     }
+
     function constructDetailModal(pokeName, pokeHeight, pokeImage, pokeType){
         return new Promise (function(resolve, reject){
             let modalBody, modalFooter, modalImage;

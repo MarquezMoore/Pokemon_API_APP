@@ -8,33 +8,36 @@ $gray7: #f2f2f2ff;
 $gray8: #fafafaff;
 
 body{
-  max-width: 100vw;
   font-size: 18;
 }
-main{
-    ul{
-        list-style: none;
-        padding: 0 0 0 0;
-        li{
-            width: 25%;
+// minor list adjustments
+ul{
+    list-style: none;
+    li{
+        padding: 10px;
+        .btn{
             padding: 10px;
-            .btn{
-                padding: 10px;
-                color: $gray2;
-                width: 100%;
-                transition: all 300ms;
-                &:hover{
-                    transform: scale(1.1);
-                }
+            color: $gray2;
+            width: 100%;
+            transition: all 300ms;
+            &:hover{
+                transform: scale(1.1);
             }
         }
     }
-
 }
-
+// small transition to the nav github link
+.github{
+    transition: all 300ms;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+// Modal image styling
 .modal-image{
     padding-bottom: 20px;
 }
+// footer styling
 footer{
     display: flex;
     justify-content: center;
@@ -53,66 +56,6 @@ footer{
 }
 
 
-.detail-modal-container{
-    position: fixed;
-    background: rgba(0,0,0,0.4);
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    // scroll if overflow
-    overflow: scroll;
-    // hide the modal container by default
-    display: none;
-    &.visable{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .modal{
-        max-width: 50%;
-        max-height: 50%;
-        background: $gray8;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        border-radius: 5px;
-        .modal__header{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 0 20px 0;
-            h1{
-                margin: 0 0 0 0;
-            }
-            .modal__close{
-                border: none;
-                border-radius: 5px;
-                padding: .2rem;
-                background: $gray6;
-                transition: all 500ms;
-                &:hover{
-                    transform: scale(1.05);
-                }
-            }
-        }
-        .modal__copy{
-            display: flex;
-            align-items: center;
-            padding: 0 0 20px 0;
-            img{
-                flex: 1;
-                margin: 0 15px 0 0;
-                width: 100px;
-                height: 100px;
-            }
-            p{
-                flex: 3;
-                margin: 0 0 0 15px;
-            }
 
-        }
-    }
-}
 
 

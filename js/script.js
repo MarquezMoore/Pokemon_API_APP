@@ -1,7 +1,8 @@
 // JavaScript Document
 
 let pokemonRepository = (function() {
-    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?limit=115`;
+    let searchInput = document.querySelector('.search')
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?limit=1000`;
     let pokemonList = [];
     // The function is to fetch to pokemon API and then add each item in the returned Promise to the pokemonList from above.
     function loadItems(){
@@ -14,10 +15,9 @@ let pokemonRepository = (function() {
             let items = responseJSON.results;
             items.forEach(function(item){
               let pokemon = {
-                name: item.name,
+                name: item.name[0].toUpperCase() + item.name.slice(1),
                 detailsURL: item.url
               };
-              console.log(pokemon);
               add(pokemon);
             })
             hideLoadingMessage();//code to stop the loading image.
@@ -36,7 +36,7 @@ let pokemonRepository = (function() {
         })
         .then(function(details){
             currentPokemon.height = details.height,
-            currentPokemon.image = details.sprites.back_default,
+            currentPokemon.image = details.sprites.other.dream_world.front_default,
             currentPokemon.types = details.types
             hideLoadingMessage();//code to stop the loading image.
         })
@@ -62,7 +62,12 @@ let pokemonRepository = (function() {
     function addListItem(pokemon){
             let pokeList = document.querySelector('.pokemon-list');
             let listItem = document.createElement('li');
+            listItem.classList.add('pokemon');
             let button = document.createElement('button');
+            button.classList.add('btn');
+            button.classList.add('btn-light');
+            button.setAttribute('data-bs-toggle','modal');
+            button.setAttribute('data-bs-target', '#pokemonModal');
             button.innerText = pokemon.name;
             // button.classList.add('pokemon-button');
             listItem.appendChild(button);
@@ -77,36 +82,32 @@ let pokemonRepository = (function() {
     }
     function constructDetailModal(pokeName, pokeHeight, pokeImage, pokeType){
         return new Promise (function(resolve, reject){
-            let detailModalContainer = document.querySelector('.detail-modal-container');
-            let modal = document.createElement('div');
+            let modalBody, modalFooter, modalImage;
+            modalTitle = document.querySelector('.modal-title');
+            modalBody = document.querySelector('.modal-body');
+            modalFooter = document.querySelector('.modal-footer');
+            modalImage = document.createElement('img');
+            modalImage.classList.add('modal-image');
             
-            detailModalContainer.innerHTML = '';
-            modal.classList.add('modal');
-            let modalHeader = document.createElement('section');
-            modalHeader.classList.add('modal__header');
-            let modalTitle = document.createElement('h1');
+            // reset html in modal body before adding new data
+            modalBody.innerHTML = "";
+            
             modalTitle.innerText = pokeName;
-            let modalClose = document.createElement('button');
-            modalClose.classList.add('modal__close');
-            modalClose.innerText = 'Close';
-            let modalCopy = document.createElement('section');
-            modalCopy.classList.add('modal__copy');
-            let modalImage = document.createElement('img');
             modalImage.setAttribute('src', pokeImage);
-            let modalText = document.createElement('p');
-            modalText.innerText = `${pokeName} is ${pokeHeight} meter(s) tall with type(s) of ${pokeType}!`
+            modalImage.setAttribute('width', '200px');
+            modalImage.setAttribute('alt', `this is a picture of ${pokeName}`);
 
-            // Appendaging of elements to modal container and modal
-            detailModalContainer.appendChild(modal);
-            modal.appendChild(modalHeader);
-            modal.appendChild(modalCopy);
-            modalHeader.appendChild(modalTitle);
-            modalHeader.appendChild(modalClose);
-            modalCopy.appendChild(modalImage);
-            modalCopy.appendChild(modalText);
+            modalCopy = document.createElement('p');
+            modalCopy.innerText = `${pokeName} is ${pokeHeight} meter(s) tall with type(s) of ${pokeType}!`
+            
+
+            // Append details to the modal body
+            modalBody.append(modalImage);
+            modalBody.append(modalCopy);
+
 
             // promise resolve pass the modal container to be handled in the show details function
-            resolve(detailModalContainer);
+            resolve('Completed successfully!');
             reject('Unable to complete task...');
             
         });
@@ -119,21 +120,7 @@ let pokemonRepository = (function() {
             let pokeType = getPokemonTypes(pokemon);
             constructDetailModal(pokeName, pokeHeight, pokeImage, pokeType)
             .then(function(result){
-                let modalClose = document.querySelector('.modal__close');
-            // code to run upon successful promise completion
-                // make modal visable
-                result.classList.add('visable');
-                modalClose.focus(); // places focus to modal close button so that is can be closed with enter and space keys 
-                // adding of event listeners for modal closure
-                window.addEventListener('keydown', function(e){
-                    if(e.key === 'Escape') hideModal();
-                })
-                modalClose.addEventListener('click', function(){
-                    hideModal();
-                });
-                result.addEventListener('click', function(e){
-                    if(e.target === result && result.classList.contains('visable')) hideModal();
-                })
+              console.log(result);
             })
             .catch(function(result){
                 // code to run upon unsuccessful promise completion
@@ -155,12 +142,21 @@ let pokemonRepository = (function() {
         pokeTypeString = parsedTypeList.toString().replace(',', ' and ');
         return pokeTypeString;
     }
-    // function to hide modal 
-    function hideModal(){
-        let detailModalContainer = document.querySelector('.detail-modal-container');
-        detailModalContainer.classList.remove('visable');
-    }
 
+     
+    searchInput.addEventListener('input', function(){
+        let allPokemon = document.querySelectorAll('.pokemon');
+        let filterValue = searchInput.value.toUpperCase();
+        
+        allPokemon.forEach(function(item){
+            console.log(item.innerText);
+            if(item.innerText.toUpperCase().indexOf(filterValue) > -1){
+                item.style.display = '';
+            }else{
+                item.style.display = 'none';
+            }
+        })
+    });
    
     // The following return will return the functions of this IIFE to be used outside this scope/context
     return {

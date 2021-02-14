@@ -2,7 +2,7 @@
 
 let pokemonRepository = (function() {
     let searchInput = document.querySelector('.search')
-    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?limit=1000`;
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/?limit=100`;
     let pokemonList = [];
 // The function is to fetch to pokemon API and then add each item in the returned Promise to the pokemonList from above.
     function loadItems(){

@@ -1,7 +1,9 @@
-# PokeDeX. App [View in Broswer](https://marquezmoore.github.io/Pokemon_API_APP/)
+# PokeDeX. App
 
-- [Project Description](#Description)
-- [Tech Stack](#Tech-Stack)
+[View in Broswer](https://marquezmoore.github.io/Pokemon_API_APP/)
+
+- [Objective](#Objective)
+- [Technology](#Tech-Stack)
 - [Requirements](#Requirements)
 - [Usage](#Usage)
 
@@ -11,7 +13,7 @@
 
 ## Objective
 The objective of this project was to build a small web application that fetches data from an external API using HTML, CSS and JavaScript.
-## Technology used
+## Technology
 - HTML
 - CSS
 - Javascript

@@ -1,4 +1,4 @@
-# PokeDeX. App
+# PokeDeX. App [View in Broswer](https://marquezmoore.github.io/Pokemon_API_APP/)
 
 - [Project Description](#Description)
 - [Tech Stack](#Tech-Stack)
@@ -6,10 +6,12 @@
 - [Usage](#Usage)
 
 
-## Description
+![See in action!](./assets/live-demo.gif)
 
-This project was aimed and buidling an app that utilized asyncronous operation via fetch and promises to retrive data from an external API. 
-## Tech Stack
+
+## Objective
+The objective of this project was to build a small web application that fetches data from an external API using HTML, CSS and JavaScript.
+## Technology used
 - HTML
 - CSS
 - Javascript
@@ -24,5 +26,3 @@ This project was aimed and buidling an app that utilized asyncronous operation v
 To use this app one must simple click on one of the button that load into the document. 
 
 The is also a search bar allow the filter of list items loaded into the document. 
-
-[View in Broswer](https://marquezmoore.github.io/Pokemon_API_APP/)

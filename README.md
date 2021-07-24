@@ -1,6 +1,8 @@
 # PokeDeX. App
 
-[View in Broswer](https://marquezmoore.github.io/Pokemon_API_APP/)
+<div align="cneter">
+<a href="https://marquezmoore.github.io/Pokemon_API_APP/">View in Broswer</a>
+<div>
 
 - [Objective](#Objective)
 - [Technology](#Tech-Stack)

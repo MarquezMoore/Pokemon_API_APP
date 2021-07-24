@@ -7,8 +7,10 @@
 - [Requirements](#Requirements)
 - [Usage](#Usage)
 
-
-![See in action!](./assets/live-demo.gif)
+# Demo in Browser View
+![See browser view in action!](./assets/live-demo.gif)
+# Demo in Mobile View
+![See mobile view in action!](./assets/pokemonMobile.gif)
 
 
 ## Objective
@@ -20,11 +22,13 @@ The objective of this project was to build a small web application that fetches 
 - Bootstrap Framework
 - External PokeAPI 
 
-## Requirements
+## Requirements / Features
 - App must fetch data from external API via ansync operations.
 - App must utilize an framework for UI patterns and repsonsiness.
 - The controlable networking, computational, and rendering perfomance should be optimized. 
 ## Usage
-To use this app one must simple click on one of the button that load into the document. 
+To use this app one must simply click on one of the buttons that load onto the document. After which, details for the respective pokemon will be displayed. 
+Use of the search bar to find pokemon more efficiently can also be done.
 
-The is also a search bar allow the filter of list items loaded into the document. 
+
+

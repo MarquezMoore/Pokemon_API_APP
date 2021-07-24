@@ -4,11 +4,12 @@
 <a href="https://marquezmoore.github.io/Pokemon_API_APP/">View in Broswer</a>
 </div>
 
+
+## Table of Contents
 - [Objective](#Objective)
 - [Technology](#Tech-Stack)
 - [Requirements](#Requirements)
 - [Usage](#Usage)
-
 ## Demo in Browser View
 ![See browser view in action!](./assets/live-demo.gif)
 ## Demo in Mobile View

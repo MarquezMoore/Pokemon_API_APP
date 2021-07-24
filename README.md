@@ -12,7 +12,7 @@
 ## Demo in Mobile View
 <div align="center">
 <img style="" src="./assets/pokemonMobile.gif" alt="Mobile Demo" width="200">
-<div>
+</div>
 <!-- ![See mobile view in action!](./assets/pokemonMobile.gif) -->
 
 

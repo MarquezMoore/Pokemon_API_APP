@@ -10,7 +10,9 @@
 ## Demo in Browser View
 ![See browser view in action!](./assets/live-demo.gif)
 ## Demo in Mobile View
-<img src="./assets/pokemonMobile.gif" alt="Mobile Demo" width="200">
+<div align="center">
+<img style="" src="./assets/pokemonMobile.gif" alt="Mobile Demo" width="200">
+<div>
 <!-- ![See mobile view in action!](./assets/pokemonMobile.gif) -->
 
 
